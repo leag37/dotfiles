@@ -130,18 +130,25 @@ hl.bind(mod .. " + SHIFT + CTRL + ALT + Y", hl.dsp.exec_cmd("shutdown now"))
 -- Program menu
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu))
 
+-- Windows
+----------
+
 -- Focus
 hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. " + J", hl.dsp.focus({ direction = "down" }))
 
+-- Move windows
 hl.bind(mod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }), { description = "Swap tiled window left" })
 hl.bind(mod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }), { description = "Swap tiled window right" })
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }), { description = "Swap tiled window up" })
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }), { description = "Swap tiled window down" })
 hl.bind(mod .. " + SHIFT + X", hl.dsp.layout("rotatesplit 90"))
+hl.bind(mod .. " + SHIFT + S", hl.dsp.layout("swapsplit"))
 
+hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
+hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
 
 -- Workspaces
 -------------
@@ -152,3 +159,16 @@ for i = 1, 10 do
   hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
+
+-- Multimedia
+-------------
+
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
