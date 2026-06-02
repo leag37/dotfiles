@@ -19,7 +19,10 @@ local menu = "hyprlauncher"
 ---------------
 -- AUTOSTART --
 ---------------
-
+hl.on("hyprland.start", function()
+  hl.exec_cmd("hypridle")
+  hl.exec_cmd("waybar")
+end)
 
 -------------------
 -- LOOK AND FEEL --
@@ -120,6 +123,9 @@ hl.bind(mod .. " + Q", hl.dsp.window.close())
 
 -- Log out of hyprland
 hl.bind(mod .. " + SHIFT + Y", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+
+-- Suspend
+hl.bind(mod .. " + SHIFT + P", hl.dsp.exec_cmd("systemctl suspend"))
 
 -- Reboot PC
 hl.bind(mod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd("reboot"))
