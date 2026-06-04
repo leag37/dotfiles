@@ -124,8 +124,11 @@ hl.bind(mod .. " + Q", hl.dsp.window.close())
 -- Log out of hyprland
 hl.bind(mod .. " + SHIFT + Y", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
+-- Lock
+hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("loginctl lock-session"))
+
 -- Suspend
-hl.bind(mod .. " + SHIFT + P", hl.dsp.exec_cmd("systemctl suspend"))
+hl.bind(mod .. " + SHIFT + CTRL + S", hl.dsp.exec_cmd("systemctl suspend"))
 
 -- Reboot PC
 hl.bind(mod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd("reboot"))
@@ -151,7 +154,7 @@ hl.bind(mod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }), { de
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }), { description = "Swap tiled window up" })
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }), { description = "Swap tiled window down" })
 hl.bind(mod .. " + SHIFT + X", hl.dsp.layout("rotatesplit 90"))
-hl.bind(mod .. " + SHIFT + S", hl.dsp.layout("swapsplit"))
+hl.bind(mod .. " + SHIFT + W", hl.dsp.layout("swapsplit"))
 
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
 hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
