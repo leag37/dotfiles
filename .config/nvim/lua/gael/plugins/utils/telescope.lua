@@ -1,0 +1,60 @@
+return {
+  "nvim-telescope/telescope.nvim",
+  tag = "v0.2.1",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-fzf-native.nvim",s
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    local telescope = require("telescope")
+    local actions = require("telescope.actions")
+    local telescope_config = require("telescope.config")
+
+    -- Clone the default Telescope configuration
+    local vimgrep_arguments = { unpack(telescope_config.values.vimgrep_arguments) }
+
+    -- Search hidden/dot files
+    table.insert(vimgrep_arguments, "--hidden")
+
+    -- Don't search '.git' directory
+    table.insert(vimgrep_arguments, "--glob")
+    table.insert(vimgrep_arguments, "!**/.git/*")
+
+    -- Setup
+    telescope.setup({
+      defaults = {
+        path_display = { "smart" },
+        mappings = {
+          i = {
+            ["<C-k>"] = actions.move_selection_previous, -- move to prev results
+            ["<C-j>"] = actions.move_selection_next, -- move to next results
+            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send result to quick fix list
+          },
+        },
+
+        -- 'hidden = true' is not supported in text grep commands
+        vimgrep_arguments = vimgrep_arguments,
+      },
+      
+      -- pickers
+      pickers = {
+        find_files = {
+          -- 'hidden = true' will still show the inside of '.git/' as it's not '.gitignore'd
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+      },
+    })
+
+    -- Load fzf extension
+    telescope.load_extension("fzf")
+
+    -- keymaps
+    local keymaps = vim.keymaps
+    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
+    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy find string in cwd" })
+    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", { desc = "Find string under the cursor" })
+    keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
+  end,
+}
