@@ -46,7 +46,7 @@ hl.config({
     inactive_opacity = 1.0,
 
     dim_modal = true,
-    dim_inactive = true,
+    dim_inactive = false,
     dim_strength = 0.5,
 
     blur = {
@@ -158,6 +158,10 @@ hl.bind(mod .. " + SHIFT + W", hl.dsp.layout("swapsplit"))
 
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
 hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
+
+-- Mouse control
+hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Workspaces
 -------------
