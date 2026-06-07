@@ -17,6 +17,7 @@ require("lazy").setup(
   {
     { import = "gael.plugins" },
     { import = "gael.plugins.ui" },
+    { import = "gael.plugins.utils" },
   },
   {
     change_detection = {
