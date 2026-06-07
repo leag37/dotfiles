@@ -17,11 +17,15 @@ opt.wrap = false
 
 -- search settings
 opt.incsearch = true -- enables incremental search
+opt.hlsearch = true -- highlight the search result
 opt.ignorecase = true -- ignore case while searching
 opt.smartcase = true -- only cares about casing if you use mixed casing
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
+
+-- file format
+opt.ffs = "unix,dos"
 
 -- appearance
 
