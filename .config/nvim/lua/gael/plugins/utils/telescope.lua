@@ -3,7 +3,7 @@ return {
   tag = "v0.2.1",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-fzf-native.nvim",s
+    "nvim-telescope/telescope-fzf-native.nvim",
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
@@ -44,17 +44,32 @@ return {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
       },
+
+      -- extensions
+      extensions = {
+        -- file browser
+        file_browser = {
+          hidden = { 
+            file_browser = true,
+            folder_browser = true,
+          },
+          follow_symlinks = true,
+          theme = "ivy",
+          grouped = true,
+        },
+      },
     })
 
     -- Load fzf extension
     telescope.load_extension("fzf")
 
     -- keymaps
-    local keymaps = vim.keymaps
+    local keymap = vim.keymap
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", { desc = "Find string under the cursor" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
+    keymap.set("n", "<leader>fm", "<cmd>Telescope keymaps<CR>", { desc = "Show all telescope keymaps" })
   end,
 }
