@@ -16,6 +16,10 @@
     "clock"
   ],
   "modules-right": [
+    "network",
+    "bluetooth",
+    "group/pulseaudio",
+    "tray"
   ],
 
   //------------------
