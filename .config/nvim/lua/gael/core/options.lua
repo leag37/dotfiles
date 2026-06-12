@@ -14,6 +14,7 @@ opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
 opt.wrap = false
+opt.scrolloff = 5 -- keep 5 lines visible when scolling top and bottom
 
 -- search settings
 opt.incsearch = true -- enables incremental search

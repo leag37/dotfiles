@@ -26,6 +26,10 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tm", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
+-- TERMINAL
+------------
+keymap.set({ "n", "t" }, '<C-t>', "<cmd>ToggleTerm<CR>", opts)
+
 
 -- MISC
 -----------
