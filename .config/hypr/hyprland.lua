@@ -131,10 +131,10 @@ hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mod .. " + SHIFT + CTRL + S", hl.dsp.exec_cmd("systemctl suspend"))
 
 -- Reboot PC
-hl.bind(mod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd("reboot"))
+hl.bind(mod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd("hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"))
 
 -- Shutdown PC
-hl.bind(mod .. " + SHIFT + CTRL + ALT + Y", hl.dsp.exec_cmd("shutdown now"))
+hl.bind(mod .. " + SHIFT + CTRL + ALT + Y", hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
 
 -- Program menu
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu))
@@ -148,6 +148,11 @@ hl.bind(mod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. " + J", hl.dsp.focus({ direction = "down" }))
 
+hl.bind(mod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(mod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(mod .. " + down", hl.dsp.focus({ direction = "down" }))
+
 -- Move windows
 hl.bind(mod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }), { description = "Swap tiled window left" })
 hl.bind(mod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }), { description = "Swap tiled window right" })
@@ -155,6 +160,11 @@ hl.bind(mod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }), { descr
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }), { description = "Swap tiled window down" })
 hl.bind(mod .. " + SHIFT + X", hl.dsp.layout("rotatesplit 90"))
 hl.bind(mod .. " + SHIFT + W", hl.dsp.layout("swapsplit"))
+
+hl.bind(mod .. " + SHIFT + left", hl.dsp.window.swap({ direction = "left" }), { description = "Swap tiled window left" })
+hl.bind(mod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" }), { description = "Swap tiled window right" })
+hl.bind(mod .. " + SHIFT + up", hl.dsp.window.swap({ direction = "up" }), { description = "Swap tiled window up" })
+hl.bind(mod .. " + SHIFT + down", hl.dsp.window.swap({ direction = "down" }), { description = "Swap tiled window down" })
 
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
 hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
