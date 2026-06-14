@@ -28,7 +28,7 @@ keymap.set("n", "<leader>tm", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- TERMINAL
 ------------
-keymap.set({ "n", "t" }, '<C-t>', "<cmd>ToggleTerm<CR>", opts)
+keymap.set({ "n", "t" }, "<C-t>", "<cmd>ToggleTerm<CR>", { desc = "Toggle the terminal" } )
 
 
 -- MISC
