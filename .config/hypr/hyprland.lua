@@ -15,6 +15,7 @@ hl.monitor({
 local terminal = "kitty"
 local file_manager = "dolphin"
 local menu = "hyprlauncher"
+local browser = "brave"
 
 ---------------
 -- AUTOSTART --
@@ -22,6 +23,7 @@ local menu = "hyprlauncher"
 hl.on("hyprland.start", function()
   hl.exec_cmd("hypridle")
   hl.exec_cmd("waybar")
+  hl.exec_cmd("protonvpn-app")
 end)
 
 -------------------
@@ -115,6 +117,9 @@ local mod = "SUPER"
 -- Terminal
 hl.bind(mod .. " + T", hl.dsp.exec_cmd(terminal))
 
+-- Browser
+hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
+
 -- File manager
 hl.bind(mod .. " + F", hl.dsp.exec_cmd(file_manager))
 
@@ -122,19 +127,19 @@ hl.bind(mod .. " + F", hl.dsp.exec_cmd(file_manager))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 
 -- Log out of hyprland
-hl.bind(mod .. " + SHIFT + Y", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mod .. " + SHIFT + GRAVE", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
 -- Lock
-hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mod .. " + SHIFT + MINUS", hl.dsp.exec_cmd("loginctl lock-session"))
 
 -- Suspend
-hl.bind(mod .. " + SHIFT + CTRL + S", hl.dsp.exec_cmd("systemctl suspend"))
+hl.bind(mod .. " + SHIFT + CTRL + MINUS", hl.dsp.exec_cmd("systemctl suspend"))
 
 -- Reboot PC
-hl.bind(mod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd("hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"))
+hl.bind(mod .. " + SHIFT + CTRL + GRAVE", hl.dsp.exec_cmd("hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"))
 
 -- Shutdown PC
-hl.bind(mod .. " + SHIFT + CTRL + ALT + Y", hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
+hl.bind(mod .. " + SHIFT + CTRL + ALT + GRAVE", hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
 
 -- Program menu
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu))
@@ -165,13 +170,25 @@ hl.bind(mod .. " + SHIFT + left", hl.dsp.window.swap({ direction = "left" }), { 
 hl.bind(mod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" }), { description = "Swap tiled window right" })
 hl.bind(mod .. " + SHIFT + up", hl.dsp.window.swap({ direction = "up" }), { description = "Swap tiled window up" })
 hl.bind(mod .. " + SHIFT + down", hl.dsp.window.swap({ direction = "down" }), { description = "Swap tiled window down" })
+hl.bind(mod .. " + SHIFT + TAB", hl.dsp.layout("rotatesplit -90"))
+hl.bind(mod .. " + TAB", hl.dsp.layout("rotatesplit 90"))
 
+-- Resizing windows
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
 hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
+hl.bind(mod .. " + SHIFT + HOME", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
+hl.bind(mod .. " + SHIFT + END", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
+hl.bind(mod .. " + SHIFT + page_up", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
+hl.bind(mod .. " + SHIFT + page_down", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
 
 -- Mouse control
+-- Drag and resize
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Scroll through workspaces by scrolling
+hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Workspaces
 -------------
