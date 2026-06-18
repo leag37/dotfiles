@@ -19,7 +19,8 @@
     "network",
     "bluetooth",
     "group/pulseaudio",
-    "tray"
+    "tray",
+    "custom/notification"
   ],
 
   //------------------

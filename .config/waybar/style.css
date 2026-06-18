@@ -21,3 +21,11 @@ window#waybar {
 #clock, #battery, #network, #cpu, #memory {
   padding: 0 10px;
 }
+
+#tray {
+  /* padding: 0 8px; */
+}
+
+#custom-notification {
+  padding: 0 8px;
+}
