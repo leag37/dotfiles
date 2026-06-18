@@ -8,8 +8,8 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>vq", "<cmd>qa<CR>", { desc = "Exit NeoVim" })
 keymap.set("n", "<leader>vQ", "<cmd>qa!<CR>", { desc = "Force exit NeoVim" })
 keymap.set("n", "<leader>vs", "<cmd>w<CR>", { desc = "Save current file" })
-keymap.set("n", "<leader>va", "<cmd>w!<CR>", { desc = "Save all files" })
-keymap.set("n", "<leader>vx", "<cmd>wq!<CR>", { desc = "Save all files and quit" })
+keymap.set("n", "<leader>va", "<cmd>wa<CR>", { desc = "Save all files" })
+keymap.set("n", "<leader>vx", "<cmd>wqa<CR>", { desc = "Save all files and quit" })
 
 -- WINDOWS
 -----------
