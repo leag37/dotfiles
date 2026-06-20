@@ -182,13 +182,28 @@ hl.bind(mod .. " + SHIFT + down", hl.dsp.window.swap({ direction = "down" }), { 
 hl.bind(mod .. " + SHIFT + TAB", hl.dsp.layout("rotatesplit -90"))
 hl.bind(mod .. " + TAB", hl.dsp.layout("rotatesplit 90"))
 
+-- @TODO Unify grouping to single context-sensitive command
+hl.bind(mod .. " + SHIFT + HOME", hl.dsp.window.move({ into_or_create_group = "left" }))
+hl.bind(mod .. " + SHIFT + END", hl.dsp.window.move({ into_or_create_group = "right" }))
+hl.bind(mod .. " + SHIFT + page_up", hl.dsp.window.move({ into_or_create_group = "up" }))
+hl.bind(mod .. " + SHIFT + page_down", hl.dsp.window.move({ into_or_create_group = "down" }))
+
+hl.bind(mod .. " + CTRL + HOME", hl.dsp.window.move({ out_of_group = "left" }))
+hl.bind(mod .. " + CTRL + END", hl.dsp.window.move({ out_of_group = "right" }))
+hl.bind(mod .. " + CTRL + page_up", hl.dsp.window.move({ out_of_group = "up" }))
+hl.bind(mod .. " + CTRL + page_down", hl.dsp.window.move({ out_of_group = "down" }))
+
+hl.bind(mod .. " + SHIFT + G", hl.dsp.group.toggle({}))
+hl.bind(mod .. " + page_up", hl.dsp.group.next({}))
+hl.bind(mod .. " + page_down", hl.dsp.group.prev({}))
+
 -- Resizing windows
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
 hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
-hl.bind(mod .. " + SHIFT + HOME", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
-hl.bind(mod .. " + SHIFT + END", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
-hl.bind(mod .. " + SHIFT + page_up", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
-hl.bind(mod .. " + SHIFT + page_down", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
+hl.bind(mod .. " + CTRL + SHIFT + HOME", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
+hl.bind(mod .. " + CTRL + SHIFT + END", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
+hl.bind(mod .. " + CTRL + SHIFT + page_up", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
+hl.bind(mod .. " + CTRL + SHIFT + page_down", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
 
 -- Mouse control
 -- Drag and resize
