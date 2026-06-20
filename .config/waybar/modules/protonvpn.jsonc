@@ -1,0 +1,7 @@
+{
+  "custom/protonvpn": {
+    "format": "VPN: {}",
+    "exec": "protonvpn status",
+    "interval": 60
+  }
+}

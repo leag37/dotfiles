@@ -22,8 +22,9 @@ local browser = "brave"
 ---------------
 hl.on("hyprland.start", function()
   hl.exec_cmd("hypridle")
+  hl.exec_cmd("swaync")
   hl.exec_cmd("waybar")
-  hl.exec_cmd("protonvpn-app")
+  hl.exec_cmd("protonvpn connect")
 end)
 
 -------------------
@@ -123,6 +124,9 @@ hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
 -- File manager
 hl.bind(mod .. " + F", hl.dsp.exec_cmd(file_manager))
 
+-- Notifications
+hl.bind(mod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+
 -- Close window
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 
@@ -143,6 +147,11 @@ hl.bind(mod .. " + SHIFT + CTRL + ALT + GRAVE", hl.dsp.exec_cmd("hyprshutdown -t
 
 -- Program menu
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu))
+
+-- Screenshots
+hl.bind("Print", hl.dsp.exec_cmd("grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y%m%d-%H%M%S.png')"))
+hl.bind("SUPER + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y%m%d-%H%M%S.png')"))
+hl.bind("SUPER + SHIFT + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
 
 -- Windows
 ----------
