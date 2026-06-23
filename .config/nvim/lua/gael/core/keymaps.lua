@@ -21,7 +21,7 @@ keymap.set("n", "<leader>wq", "<cmd>close<CR>", { desc = "Close current split" }
 -- TABS
 -----------
 keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>tw", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tm", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
