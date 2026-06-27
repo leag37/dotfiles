@@ -4,7 +4,9 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-fzf-native.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
     "nvim-tree/nvim-web-devicons",
+    "folke/todo-comments.nvim",
   },
   config = function()
     local telescope = require("telescope")
@@ -57,11 +59,16 @@ return {
           theme = "ivy",
           grouped = true,
         },
+
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {}
+        },
       },
     })
 
-    -- Load fzf extension
+    -- Load extension
     telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
 
     -- keymaps
     local keymap = vim.keymap
@@ -72,4 +79,4 @@ return {
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
     keymap.set("n", "<leader>fm", "<cmd>Telescope keymaps<CR>", { desc = "Show all telescope keymaps" })
   end,
-}
+} 
