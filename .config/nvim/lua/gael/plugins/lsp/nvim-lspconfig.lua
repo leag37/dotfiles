@@ -1,4 +1,7 @@
 return {
+
+
+
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
@@ -6,7 +9,6 @@ return {
   },
   config = function()
     local lspconfig = require("lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     -- Gutter symbols
     -- Change the Diagnostic symbols in the gutter
@@ -57,19 +59,14 @@ return {
 
     -- LSPs
     local function SetupLSP(lsp)
-      local settings = require("gael.plugins.lsp.servers." .. lsp)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
+      local config = require("gael.plugins.lsp.servers." .. lsp)
 
-      vim.lsp.config(lsp, {
-        capabilities = capabilities,
-        settings = settings,
-      })
-
+      vim.lsp.config(lsp, config)
       vim.lsp.enable(lsp)
     end
 
     SetupLSP("clangd")
     SetupLSP("rust_analyzer")
-
+    SetupLSP("lua_ls")
   end,
 }

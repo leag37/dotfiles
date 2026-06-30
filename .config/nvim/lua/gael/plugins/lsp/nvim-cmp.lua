@@ -19,7 +19,7 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      
+
       snippet = {
         expand = function(args)
           vim.fn["vsnip#anonymous"](args.body) -- vsnip
