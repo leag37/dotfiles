@@ -65,8 +65,11 @@ return {
       vim.lsp.enable(lsp)
     end
 
+    SetupLSP("neocmake")
     SetupLSP("clangd")
-    SetupLSP("rust_analyzer")
     SetupLSP("lua_ls")
+    SetupLSP("pyright")
+    SetupLSP("roslyn_ls")
+    SetupLSP("rust_analyzer")
   end,
 }

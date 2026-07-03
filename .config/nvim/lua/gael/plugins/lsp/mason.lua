@@ -36,6 +36,7 @@ return {
     -- LSPs
     local lsps = {
       "clangd", -- C, C++
+      "neocmakelsp", -- cmake
       "css-lsp", -- CSS
       "html-lsp", -- HTML
       "lua-language-server", -- Lua
@@ -54,13 +55,15 @@ return {
       "netcoredbg", -- C#
     }
     InstallPackages(daps)
-    
+
     -- Linters
     local linters = {
       "bacon", -- Rust
+      "cmakelang", -- cmake
       "cpplint", -- C, C++
       "luacheck", -- Lua
       "oxlint", -- JS, TypeScript
+      "pylint", -- Python
       "semgrep", -- C#
       "stylelint", -- CSS
     }
@@ -68,7 +71,10 @@ return {
 
     -- Formatters
     local formatters = {
+      "black", -- Python
       "clang-format", -- C, C#, C++
+      "cmakelang", -- cmake
+      "isort", -- Python
       "luaformatter", -- Lua
       "prettier", -- CSS, JSON, HTML, JS, Markdown, TypeScript
     }
