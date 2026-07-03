@@ -27,14 +27,14 @@ return {
       },
       format_on_save = {
         lsp_fallback = true,
-        async = true,
+        async = false,
       },
     })
 
     local keymap = vim.keymap
     keymap.set({ "n", "v" }, "<leader>af", function()
-    end,
-    { desc = "Format file or range (in visual mode)" }
+      end,
+      { desc = "Format file or range (in visual mode)" }
     )
   end,
 }
