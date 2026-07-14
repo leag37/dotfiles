@@ -1,7 +1,8 @@
 {
   "custom/protonvpn": {
-    "format": "VPN: {}",
-    "exec": "protonvpn status",
+    "format": "VPN: {text}",
+    "exec": "~/.config/waybar/scripts/protonvpn.sh",
+    "return-type": "json",
     "interval": 60
   }
 }
