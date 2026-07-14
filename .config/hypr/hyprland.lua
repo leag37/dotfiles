@@ -3,11 +3,18 @@
 --------------
 
 hl.monitor({
-	output	  = "",
-	mode		  = "preferred",
-	position	= "auto",
-	scale		  = "auto",
+  output   = "",
+  mode     = "preferred",
+  position = "auto",
+  scale    = "auto",
 })
+
+---------------------------
+-- ENVIRONMENT VARIABLES --
+---------------------------
+hl.env("GTK_IM_MODULE", "fcitx")
+hl.env("QT_IM_MODULE", "fcitx")
+hl.env("XMODIFIERS", "@im=fcitx")
 
 -----------------
 -- MY PROGRAMS --
@@ -25,6 +32,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("swaync")
   hl.exec_cmd("waybar")
   hl.exec_cmd("protonvpn connect")
+  hl.exec_cmd("fcitx5")
 end)
 
 -------------------
@@ -101,6 +109,8 @@ hl.config({
 
 hl.config({
   input = {
+    -- kb_layout = "us,jp",
+    -- kb_options = "grp:win_space_toggle",
     follow_mouse = 2,
     focus_on_close = 2,
   },
@@ -131,7 +141,8 @@ hl.bind(mod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 
 -- Log out of hyprland
-hl.bind(mod .. " + SHIFT + GRAVE", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mod .. " + SHIFT + GRAVE",
+  hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
 -- Lock
 hl.bind(mod .. " + SHIFT + MINUS", hl.dsp.exec_cmd("loginctl lock-session"))
@@ -143,14 +154,16 @@ hl.bind(mod .. " + SHIFT + CTRL + MINUS", hl.dsp.exec_cmd("systemctl suspend"))
 hl.bind(mod .. " + SHIFT + CTRL + GRAVE", hl.dsp.exec_cmd("hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"))
 
 -- Shutdown PC
-hl.bind(mod .. " + SHIFT + CTRL + ALT + GRAVE", hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
+hl.bind(mod .. " + SHIFT + CTRL + ALT + GRAVE",
+  hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
 
 -- Program menu
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu))
 
 -- Screenshots
 hl.bind("Print", hl.dsp.exec_cmd("grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y%m%d-%H%M%S.png')"))
-hl.bind("SUPER + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y%m%d-%H%M%S.png')"))
+hl.bind("SUPER + Print",
+  hl.dsp.exec_cmd("grim -g \"$(slurp)\" $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y%m%d-%H%M%S.png')"))
 hl.bind("SUPER + SHIFT + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
 
 -- Windows
@@ -176,7 +189,8 @@ hl.bind(mod .. " + SHIFT + X", hl.dsp.layout("rotatesplit 90"))
 hl.bind(mod .. " + SHIFT + W", hl.dsp.layout("swapsplit"))
 
 hl.bind(mod .. " + SHIFT + left", hl.dsp.window.swap({ direction = "left" }), { description = "Swap tiled window left" })
-hl.bind(mod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" }), { description = "Swap tiled window right" })
+hl.bind(mod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" }),
+  { description = "Swap tiled window right" })
 hl.bind(mod .. " + SHIFT + up", hl.dsp.window.swap({ direction = "up" }), { description = "Swap tiled window up" })
 hl.bind(mod .. " + SHIFT + down", hl.dsp.window.swap({ direction = "down" }), { description = "Swap tiled window down" })
 hl.bind(mod .. " + SHIFT + TAB", hl.dsp.layout("rotatesplit -90"))
@@ -198,8 +212,10 @@ hl.bind(mod .. " + page_up", hl.dsp.group.next({}))
 hl.bind(mod .. " + page_down", hl.dsp.group.prev({}))
 
 -- Resizing windows
-hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Toggle fullscreen" })
-hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Toggle maximized" })
+hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
+  { description = "Toggle fullscreen" })
+hl.bind(mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }),
+  { description = "Toggle maximized" })
 hl.bind(mod .. " + CTRL + SHIFT + HOME", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
 hl.bind(mod .. " + CTRL + SHIFT + END", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
 hl.bind(mod .. " + CTRL + SHIFT + page_up", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
@@ -232,7 +248,11 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+  { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+  { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+  { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+  { locked = true, repeating = true })
