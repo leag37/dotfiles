@@ -38,8 +38,12 @@ pacman steam
 # Programming
 pacman clang
 pacman cmake
+pacman dotnet-runtime
+pacman dotnet-sdk
 pacman gcc
 pacman github-cli
+pacman lua
+pacman luarocks
 pacman tree-sitter
 pacman tree-sitter-cli
 
