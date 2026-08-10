@@ -24,3 +24,8 @@ _darcs
 
 # Install scripts
 \scripts
+
+# Ignore hyprland stuff right now
+\.config\hypr
+\.config\swappy
+\.config\waybar
