@@ -18,6 +18,7 @@ pacman kitty
 pacman nerd-fonts
 pacman nvim
 pacman stow
+pacman wl-clipboard
 pacman yay
 
 # Terminal
@@ -34,6 +35,7 @@ pacman proton-pass
 pacman proton-vpn-cli
 pacman proton-vpn-gtk-app
 pacman steam
+pacman strawberry
 
 # Programming
 pacman clang
@@ -61,3 +63,6 @@ nvm install latest
 node --version > ~/.nvmrc
 nvm use
 
+# Local environment
+git config --global user.name "Gael Huber"
+git config --global user.email "gael.scott.huber@gmail.com"
