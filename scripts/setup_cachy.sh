@@ -44,8 +44,10 @@ pacman dotnet-runtime
 pacman dotnet-sdk
 pacman gcc
 pacman github-cli
+pacman lldb
 pacman lua
 pacman luarocks
+pacman ninja
 pacman tree-sitter
 pacman tree-sitter-cli
 
@@ -62,6 +64,7 @@ fisher install jorgebucaran/nvm.fish
 nvm install latest
 node --version > ~/.nvmrc
 nvm use
+set --universal nvm_default_version $(node --version)
 
 # Local environment
 git config --global user.name "Gael Huber"
