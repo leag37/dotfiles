@@ -13,7 +13,7 @@ return {
         },
       },
     })
-    
+
     -- Helper for installing Mason packages
     ---@param packages string[]
     local function InstallPackages(packages)
@@ -35,54 +35,54 @@ return {
     -- Install packages
     -- LSPs
     local lsps = {
-      "clangd", -- C, C++
-      "neocmakelsp", -- cmake
-      "css-lsp", -- CSS
-      "html-lsp", -- HTML
-      "lua-language-server", -- Lua
-      "pyright", -- Python
-      "roslyn-language-server", -- C#
-      "rust-analyzer", -- Rust
+      "clangd",                     -- C, C++
+      "neocmakelsp",                -- cmake
+      "css-lsp",                    -- CSS
+      "html-lsp",                   -- HTML
+      "lua-language-server",        -- Lua
+      "pyright",                    -- Python
+      "roslyn-language-server",     -- C#
+      "rust-analyzer",              -- Rust
       "typescript-language-server", -- TypeScript
     }
     InstallPackages(lsps)
 
     -- DAPs
     local daps = {
-      "codelldb", -- C, C++, Rust
-      "js-debug-adapter", -- JS, TypeScript
+      -- "lldb-vscode",               -- C, C++, Rust (now named lldb-dap internally)
+      "codelldb",                  -- C, C++, Rust
+      "js-debug-adapter",          -- JS, TypeScript
       "local-lua-debugger-vscode", -- Lua
-      "netcoredbg", -- C#
+      "netcoredbg",                -- C#
     }
     InstallPackages(daps)
 
     -- Linters
     local linters = {
-      "bacon", -- Rust
+      "bacon",     -- Rust
       "cmakelang", -- cmake
-      "cpplint", -- C, C++
-      "luacheck", -- Lua
-      "oxlint", -- JS, TypeScript
-      "pylint", -- Python
-      "semgrep", -- C#
+      "cpplint",   -- C, C++
+      "luacheck",  -- Lua
+      "oxlint",    -- JS, TypeScript
+      "pylint",    -- Python
+      "semgrep",   -- C#
       "stylelint", -- CSS
     }
     InstallPackages(linters)
 
     -- Formatters
     local formatters = {
-      "black", -- Python
+      "black",        -- Python
       "clang-format", -- C, C#, C++
-      "cmakelang", -- cmake
-      "isort", -- Python
+      "cmakelang",    -- cmake
+      "isort",        -- Python
       "luaformatter", -- Lua
-      "prettier", -- CSS, JSON, HTML, JS, Markdown, TypeScript
+      "prettier",     -- CSS, JSON, HTML, JS, Markdown, TypeScript
     }
     InstallPackages(formatters)
 
     -- keymap
     local keymap = vim.keymap
     keymap.set("n", "<leader>lm", "<cmd>Mason<CR>", { desc = "Open Mason LSP manager" })
-
   end,
 }
