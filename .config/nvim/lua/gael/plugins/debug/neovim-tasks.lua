@@ -11,11 +11,12 @@ return {
       default_params = {
         cmake = {
           dap = {
-            -- name = "lldb-dap",
             name = "lldb",
           },
         },
       },
+      dap_open_command = function() end,
+      -- dap_open_command = function() return require('dap').repl.open() end,
     })
 
     local keymap = vim.keymap
