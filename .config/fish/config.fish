@@ -11,4 +11,6 @@ starship init fish | source
 # Rust and Cargo
 source "$HOME/.cargo/env.fish"
 
-
+# zoxide for better cd
+zoxide init fish | source
+alias cd="z"

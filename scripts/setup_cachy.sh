@@ -32,10 +32,17 @@ pacman libreoffice-still
 pacman mpv
 pacman proton-mail
 pacman proton-pass
-pacman proton-vpn-cli
-pacman proton-vpn-gtk-app
 pacman steam
 pacman strawberry
+pacman zoxide
+
+# VPN
+pacman proton-vpn-cli
+pacman proton-vpn-gtk-app
+yay -S nordvpn-gui
+sudo groupadd nordvpn
+sudo usermod -aG nordvpn $USER
+sudo systemctl enable --now nordvpn
 
 # Programming
 pacman clang
