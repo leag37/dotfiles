@@ -43,5 +43,6 @@ return {
     keymap.set("n", "<leader>bc", "<cmd>Task start auto configure<CR>", { silent = true, desc = "Configure the build" })
     keymap.set("n", "<leader>bk", "<cmd>Task start auto clean<CR>", { silent = true, desc = "Clean the build" })
     keymap.set("n", "<leader>bb", "<cmd>Task start auto build<CR>", { silent = true, desc = "Build" })
+    keymap.set("n", "<leader>bs", "<cmd>Task cancel auto build<CR>", { silent = true, desc = "Stop build" })
   end,
 }
