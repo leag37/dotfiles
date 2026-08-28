@@ -23,10 +23,14 @@ return {
 
     -- Keymaps
     local keymap = vim.keymap
-    keymap.set("n", "<leader>br", "<cmd>DapViewOpen<cr><cmd>DapViewJump breakpoint<cr>", { desc = "Open breakpoints" })
+    keymap.set("n", "<leader>br", "<cmd>DapViewOpen<cr><cmd>DapViewJump breakpoints<cr>", { desc = "Open breakpoints" })
     keymap.set("n", "<leader>bv", "<cmd>DapViewToggle<cr>", { desc = "Toggle the debug view" })
 
     -- dap.listeners.after.event_process["view_config"] = function()
+    keymap.set("n", "<S-F5>", "<cmd>DapTerminate<CR>", { desc = "Stop the debugger" })
+    dap.listeners.after.event_initialized["view_config"] = function()
+    end
+
     dap.listeners.after.event_stopped["view_config"] = function()
       keymap.set("n", "<F10>", "<cmd>DapStepOver<cr>", { desc = "Step over" })
       keymap.set("n", "<F11>", "<cmd>DapStepInto<cr>", { desc = "Step into" })
@@ -34,7 +38,7 @@ return {
     end
 
     dap.listeners.after.event_terminated["view_config"] = function()
-      keymap.del("n", "<F10>")
+      -- keymap.del("n", "<F10>")
     end
   end,
 }

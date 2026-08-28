@@ -22,5 +22,6 @@ return {
     end
 
     SetupLanguage("cpp")
+    SetupLanguage("cmake")
   end,
 }

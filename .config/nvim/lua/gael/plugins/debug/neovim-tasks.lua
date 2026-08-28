@@ -7,11 +7,14 @@ return {
   event = "VeryLazy",
   config = function()
     local tasks = require("tasks")
+    local path = require("plenary.path")
     tasks.setup({
       default_params = {
         cmake = {
           dap = {
             name = "lldb",
+            -- cwd = '${workspaceFolder}',
+            cwd = tostring(path:new('{cwd}')),
           },
         },
       },
@@ -35,7 +38,7 @@ return {
     keymap.set("n", "<F5>", start_or_resume, { silent = true, desc = "Start debugger" })
     keymap.set("n", "<leader>bd", start_or_resume, { silent = true, desc = "Start debugger" })
 
-    keymap.set("n", "<S-F5>", "<cmd>Task start auto run<CR>", { silent = true, desc = "Run the build (no debugger)" })
+    keymap.set("n", "<C-F5>", "<cmd>Task start auto run<CR>", { silent = true, desc = "Run the build (no debugger)" })
     keymap.set("n", "<leader>bt", "<CMD>Task set_module_param auto target<CR>",
       { silent = true, desc = "Set the build target" })
     keymap.set("n", "<leader>bT", "<CMD>Task set_module_param auto build_type<CR>",
