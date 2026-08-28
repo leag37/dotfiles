@@ -28,7 +28,7 @@ keymap.set("n", "<leader>tm", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- TERMINAL
 ------------
-keymap.set({ "n", "t" }, "<C-t>", "<cmd>ToggleTerm<CR>", { desc = "Toggle the terminal" } )
+keymap.set({ "n", "t" }, "<C-t>", "<cmd>ToggleTerm<CR>", { desc = "Toggle the terminal" })
 
 
 -- MISC
@@ -36,9 +36,12 @@ keymap.set({ "n", "t" }, "<C-t>", "<cmd>ToggleTerm<CR>", { desc = "Toggle the te
 
 -- Clear highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "\\", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
-
+-- Gallium mappings
+local gallium = require("gael.core.keymaps.gallium")
+-- gallium.configure()
