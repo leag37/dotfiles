@@ -28,6 +28,9 @@ pacman starship
 # Apps
 pacman anki
 pacman celluloid
+pacman discord
+pacman element-desktop
+yay fluffychat
 pacman libreoffice-still
 pacman mpv
 pacman proton-mail
@@ -39,7 +42,7 @@ pacman zoxide
 # VPN
 pacman proton-vpn-cli
 pacman proton-vpn-gtk-app
-yay -S nordvpn-gui
+yay nordvpn-gui
 sudo groupadd nordvpn
 sudo usermod -aG nordvpn $USER
 sudo systemctl enable --now nordvpn
