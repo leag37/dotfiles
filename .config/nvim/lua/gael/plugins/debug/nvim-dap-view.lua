@@ -11,6 +11,7 @@ return {
 
     nvim_dap_view.setup({
       winbar = {
+        sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "sessions", "console" },
         default_section = "scopes",
         controls = {
           enabled = true,
@@ -24,6 +25,7 @@ return {
     -- Keymaps
     local keymap = vim.keymap
     keymap.set("n", "<leader>br", "<cmd>DapViewOpen<cr><cmd>DapViewJump breakpoints<cr>", { desc = "Open breakpoints" })
+    keymap.set("n", "<leader>bo", "<cmd>DapViewOpen<cr><cmd>DapViewJump repl<cr>", { desc = "Open output" })
     keymap.set("n", "<leader>bv", "<cmd>DapViewToggle<cr>", { desc = "Toggle the debug view" })
 
     -- dap.listeners.after.event_process["view_config"] = function()
